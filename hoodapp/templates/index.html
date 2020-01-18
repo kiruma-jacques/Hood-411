@@ -1,5 +1,9 @@
 {%extends 'base.html'%}
-
+{%load bootstrap4%}
 {%block content%}
 <h1>Dahood</h1>
+<h4 class="text-center"><u>Pick your hood and get your 411</u></h4>
+{%for hood in hoods%}
+<h2>{{hood.name}}</h2>
+{%endfor%}
 {%endblock%}

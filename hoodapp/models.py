@@ -5,11 +5,11 @@ from pyuploadcare.dj.models import ImageField
 # Create your models here.
 class Profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    avi=ImageField()
+    avi=ImageField(null=True)
     bio=models.CharField(max_length=240)
-    
+
 class Hood(models.Model):
-    user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='Hood')
+    photo=ImageField(null=True)
     name=models.CharField(max_length=200)
     location=models.CharField(max_length=200)
     occupants_count=models.IntegerField(default=0)
@@ -35,3 +35,8 @@ class Member(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Posts(models.Model):
+    hood=models.ForeignKey(Hood, on_delete=models.CASCADE, related_name='Post')
+    user=models.ForeignKey(User, on_delete=models.CASCADE, related_name='Post')
+    post=models.TextField()
