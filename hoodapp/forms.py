@@ -9,7 +9,7 @@ class HoodCreateForm(forms.ModelForm):
 class BizCreateForm(forms.ModelForm):
     class Meta:
         model=Biz
-        fields=('hood', 'name', 'description', 'category')
+        fields=('name', 'description')
 
 class HoodPostsForm(forms.ModelForm):
     class Meta:

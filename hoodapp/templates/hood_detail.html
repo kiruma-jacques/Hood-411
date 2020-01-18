@@ -32,7 +32,7 @@
         <div class="modal-body">
           <form class="form-group" action="{%url 'hood_details' details.id%}" method="post">
             {% csrf_token %}
-            {%bootstrap_form form%}
+            {%bootstrap_form create_post%}
             <input class="btn btn-outline-success" type="submit" name="" value="Upload">
           </form>
         </div>

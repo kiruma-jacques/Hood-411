@@ -27,8 +27,7 @@ class Hood(models.Model):
 class Biz(models.Model):
     hood=models.ForeignKey(Hood, related_name='Biz')
     name=models.CharField(max_length=200)
-    description=models.TextField()
-    category=models.CharField(max_length=200)
+    description=models.TextField()    
 
     def __str__(self):
         return self.name

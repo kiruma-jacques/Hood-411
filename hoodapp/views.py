@@ -8,14 +8,17 @@ def index(request):
     return render(request, 'index.html',{'hoods':hoods})
 
 def hood_details(request, id):
-    details=Hood.objects.get(id=id)    
+    details=Hood.objects.get(id=id)
     create_post=HoodPostsForm(request.FILES,request.POST)
     biz_post=BizCreateForm(request.FILES, request.POST)
-    if create_post.is_valid():
+    if create_post.is_valid() and biz_post.is_valid():
         post=create_post.save(commit=False)
+        biz=biz_post.save(commit=False)
         post.user=request.user
+        biz.hood=current_hood
         post.hood=current_hood
         post.save()
+        biz.save()
         return HttpResponseRedirect(request.path_info)
     else:
         create_post=HoodPostsForm()
