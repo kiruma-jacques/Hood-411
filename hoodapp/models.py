@@ -21,8 +21,8 @@ class Hood(models.Model):
         return self.name
 
     @classmethod
-    def single_hood(id):
-        return cls.objects.filter(id)
+    def single_hood(cls, id):
+        return cls.objects.get(id)
 
 class Biz(models.Model):
     hood=models.ForeignKey(Hood, related_name='Biz')
