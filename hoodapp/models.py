@@ -7,7 +7,7 @@ class Profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     avi=ImageField(null=True)
     bio=models.CharField(max_length=240)
-    
+
 class Hood(models.Model):
     photo=ImageField(null=True)
     name=models.CharField(max_length=200)
@@ -19,6 +19,10 @@ class Hood(models.Model):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def single_hood(id):
+        return cls.objects.filter(id)
 
 class Biz(models.Model):
     hood=models.ForeignKey(Hood, related_name='Biz')
@@ -40,3 +44,6 @@ class Posts(models.Model):
     hood=models.ForeignKey(Hood, on_delete=models.CASCADE, related_name='Post')
     user=models.ForeignKey(User, on_delete=models.CASCADE, related_name='Post')
     post=models.TextField()
+
+    def __str__(self):
+        return self.post
