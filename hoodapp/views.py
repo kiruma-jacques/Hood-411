@@ -13,11 +13,12 @@ def hood_details(request, id):
     biz_post=BizCreateForm(request.FILES, request.POST)
     if create_post.is_valid() and biz_post.is_valid():
         post=create_post.save(commit=False)
-        biz=biz_post.save(commit=False)
         post.user=request.user
-        biz.hood=current_hood
         post.hood=current_hood
         post.save()
+        
+        biz=biz_post.save(commit=False)
+        biz.hood=current_hood
         biz.save()
         return HttpResponseRedirect(request.path_info)
     else:
