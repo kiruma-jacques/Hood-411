@@ -1,9 +1,22 @@
 {%extends 'base.html'%}
 {%load bootstrap4%}
 {%block content%}
-<h1>Dahood</h1>
 <h4 class="text-center"><u>Pick your hood and get your 411</u></h4>
 {%for hood in hoods%}
-<h2>{{hood.name}}</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="card m-4" style="width: 18rem;">
+      <a href="{%url 'hood_details' hood.id%}"><img class="card-img-top" src="{{hood.photo.cdn_url}}" alt="Card image cap"></a>
+      <div class="card-body">
+        <h5 class="card-title">{{hood.name}}</h5>
+        <p class="card-text"><b>{{hood.location}}</b>
+          <span>
+            <img src="https://cdn3.iconfinder.com/data/icons/seo-and-digital-marketing-material-glyphs-2/20/64-512.png" alt="location" height="20" width="20">
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 {%endfor%}
 {%endblock%}

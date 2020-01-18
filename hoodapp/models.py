@@ -7,7 +7,7 @@ class Profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     avi=ImageField(null=True)
     bio=models.CharField(max_length=240)
-
+    
 class Hood(models.Model):
     photo=ImageField(null=True)
     name=models.CharField(max_length=200)
