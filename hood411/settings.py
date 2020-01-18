@@ -143,3 +143,5 @@ UPLOADCARE={
     'pub_key':'b6e1fa11fec73324c13a',
     'secret':config('SECRET')
 }
+
+LOGIN_REDIRECT_URL = '/'
