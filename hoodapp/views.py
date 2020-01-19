@@ -30,3 +30,13 @@ def hood_details(request, id):
         biz_post=BizCreateForm()
 
     return render(request, 'hood_detail.html', locals())
+
+def search_title(request):
+    if request.method == "GET":
+        search_term=request.GET.get('search')
+        got_biz=Biz.objects.filter(name__icontains=search_term)[::-1]
+        
+        return render(request, 'results.html', locals())
+    else:
+        message="Looking for something, type it and hit search"
+    return render(request, 'results.html', locals())
