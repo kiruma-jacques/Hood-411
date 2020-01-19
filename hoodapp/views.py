@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Hood,Biz,Member,Posts
-from .forms import HoodCreateForm,BizCreateForm,HoodPostsForm
+from .forms import HoodCreateForm,BizCreateForm,HoodPostsForm,ProfileUpdateForm
 from django.http import HttpResponseRedirect
 # Create your views here.
 def index(request):
@@ -40,3 +40,15 @@ def search_title(request):
     else:
         message="Looking for something, type it and hit search"
     return render(request, 'results.html', locals())
+
+def myProfile(request,**kwargs):
+    current_user=request.user
+    prof_update=ProfileUpdateForm(request.POST)
+    if prof_update.is_valid():
+        profile=prof_update.save(commit=False)
+        profile.user=current_user
+        profile.save()
+        return HttpResponseRedirect(request.path_info)
+    else:
+        prof_update=ProfileUpdateForm()
+    return render(request, 'profile.html', locals())
