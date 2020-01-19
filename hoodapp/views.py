@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Hood,Biz,Member
+from .models import Hood,Biz,Member,Posts
 from .forms import HoodCreateForm,BizCreateForm,HoodPostsForm
 from django.http import HttpResponseRedirect
 # Create your views here.
@@ -9,6 +9,10 @@ def index(request):
 
 def hood_details(request, id):
     details=Hood.objects.get(id=id)
+
+    posts=Posts.objects.filter(hood=details.id)
+    business=Biz.objects.filter(hood=details.id)
+    
     create_post=HoodPostsForm(request.FILES,request.POST)
     biz_post=BizCreateForm(request.FILES, request.POST)
     if create_post.is_valid() and biz_post.is_valid():
@@ -16,7 +20,7 @@ def hood_details(request, id):
         post.user=request.user
         post.hood=current_hood
         post.save()
-        
+
         biz=biz_post.save(commit=False)
         biz.hood=current_hood
         biz.save()
