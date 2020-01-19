@@ -2,15 +2,13 @@
 {%block content%}
 <div class="container">
   <div class="row">
-    {%if got_projects%}
-    {%for got_project in got_projects%}
+    {%if got_biz%}
+    {%for got_biz in got_biz%}
     <div class="row">
       <div class="card m-4" style="width: 18rem;">
-        <a href="#"><img class="card-img-top" src="{{got_project.landing.cdn_url}}" alt="result landing page image"></a>
         <div class="card-body">
-          <h5 class="card-title">{{got_project.title}}</h5>
-          <p class="card-text">Upload by <b>{{got_project.user.username}}</b></p>
-          <a href="{{got_project.live_site}}" class="btn btn-primary">Visit Site</a>
+          <h5 class="card-title"><b>{{got_biz.name}}</b></h5>
+          <p class="card-text"><i>{{got_biz.description}}</i></p>          
         </div>
       </div>
     </div>

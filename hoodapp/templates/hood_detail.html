@@ -71,13 +71,27 @@
       </div>
     </div>
 <!-- fin -->
+{%if business%}
 {%for business in business%}
 <h4>{{business.name}}</h4>
+<p><i>{{business.description}}</i></p>
 {%endfor%}
+{%endif%}
 
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
+    <div class="card m-4" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Police Contact</h5>
+        <p class="card-text">Phone: <b>{{details.police_contact}}</b></p>
+      </div>
+    </div>
+    <div class="card m-4" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Hospital Contact</h5>
+        <p class="card-text">Phone: <b>{{details.hospital_contact}}</b></p>        
+      </div>
+    </div>
   </div>
 </div>
 

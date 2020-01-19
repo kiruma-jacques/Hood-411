@@ -10,19 +10,19 @@ def index(request):
 def hood_details(request, id):
     details=Hood.objects.get(id=id)
 
-    posts=Posts.objects.filter(hood=details.id)
-    business=Biz.objects.filter(hood=details.id)
+    posts=Posts.objects.filter(hood=details)
+    business=Biz.objects.filter(hood=details)
 
     create_post=HoodPostsForm(request.FILES,request.POST)
-    biz_post=BizCreateForm(request.FILES, request.POST)
+    biz_post=BizCreateForm(request.FILES,request.POST)
     if create_post.is_valid() and biz_post.is_valid():
         post=create_post.save(commit=False)
         post.user=request.user
-        post.hood=current_hood
+        post.hood=details
         post.save()
 
         biz=biz_post.save(commit=False)
-        biz.hood=current_hood
+        biz.hood=details
         biz.save()
         return HttpResponseRedirect(request.path_info)
     else:
@@ -35,7 +35,7 @@ def search_title(request):
     if request.method == "GET":
         search_term=request.GET.get('search')
         got_biz=Biz.objects.filter(name__icontains=search_term)[::-1]
-        
+
         return render(request, 'results.html', locals())
     else:
         message="Looking for something, type it and hit search"
