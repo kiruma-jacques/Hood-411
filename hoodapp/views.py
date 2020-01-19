@@ -12,7 +12,7 @@ def hood_details(request, id):
 
     posts=Posts.objects.filter(hood=details.id)
     business=Biz.objects.filter(hood=details.id)
-    
+
     create_post=HoodPostsForm(request.FILES,request.POST)
     biz_post=BizCreateForm(request.FILES, request.POST)
     if create_post.is_valid() and biz_post.is_valid():
