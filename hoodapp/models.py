@@ -7,6 +7,7 @@ class Profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     avi=ImageField(null=True)
     bio=models.CharField(max_length=240)
+    hood=models.CharField(max_length=240, null=True)
 
 class Hood(models.Model):
     photo=ImageField(null=True)
@@ -27,7 +28,7 @@ class Hood(models.Model):
 class Biz(models.Model):
     hood=models.ForeignKey(Hood, related_name='Biz')
     name=models.CharField(max_length=200)
-    description=models.TextField()    
+    description=models.TextField()
 
     def __str__(self):
         return self.name

@@ -31,7 +31,7 @@ def hood_details(request, id):
 
     return render(request, 'hood_detail.html', locals())
 
-def search_title(request):
+def search_biz(request):
     if request.method == "GET":
         search_term=request.GET.get('search')
         got_biz=Biz.objects.filter(name__icontains=search_term)[::-1]
