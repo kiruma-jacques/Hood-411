@@ -10,7 +10,7 @@ class Profile(models.Model):
     hood=models.CharField(max_length=240, null=True)
 
 class Hood(models.Model):
-    user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='hood')
+    user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='hood', null=True, blank=True)
     photo=ImageField(null=True)
     name=models.CharField(max_length=200)
     location=models.CharField(max_length=200)

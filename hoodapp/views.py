@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Hood,Biz,Member,Posts
 from .forms import HoodCreateForm,BizCreateForm,HoodPostsForm,ProfileUpdateForm
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     hoods = Hood.objects.all()

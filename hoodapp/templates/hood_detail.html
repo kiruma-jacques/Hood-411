@@ -84,8 +84,12 @@
 <!-- fin -->
 {%if business%}
 {%for business in business%}
-<h4>{{business.name}}</h4>
-<p><i>{{business.description}}</i></p>
+<div class="card m-4" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{business.name}}</h5>
+    <p class="card-text">{{business.description}}</p>
+  </div>
+</div>
 {%endfor%}
 {%endif%}
 
