@@ -10,11 +10,11 @@ class Profile(models.Model):
     hood=models.CharField(max_length=240, null=True)
 
 class Hood(models.Model):
+    user=models.OneToOneField(User, on_delete=models.CASCADE, related_name='hood')
     photo=ImageField(null=True)
     name=models.CharField(max_length=200)
     location=models.CharField(max_length=200)
     occupants_count=models.IntegerField(default=0)
-    group_member=models.ManyToManyField(User, through='Member')
     police_contact=models.IntegerField()
     hospital_contact=models.IntegerField()
 

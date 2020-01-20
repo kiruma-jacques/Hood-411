@@ -42,8 +42,19 @@
     <!-- fin -->
 {%if posts%}
 {%for post in posts%}
-<h4>{{post.user.username}}</h4>
-<p>{{post.post}}</p>
+<div class="card mb-3 mt-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <a href="{%url 'profile'%}"><img src="{{post.user.profile.avi.cdn_url}}" class="card-img" alt="..."></a>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{post.user.username|capfirst}}</h5>
+            <p class="card-text"><em>{{post.post}}</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
 {%endfor%}
 {%endif%}
 
@@ -89,7 +100,7 @@
     <div class="card m-4" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Hospital Contact</h5>
-        <p class="card-text">Phone: <b>{{details.hospital_contact}}</b></p>        
+        <p class="card-text">Phone: <b>{{details.hospital_contact}}</b></p>
       </div>
     </div>
   </div>
