@@ -24,6 +24,7 @@ def hood_details(request, id):
     business=Biz.objects.filter(hood=details)
     biz_post=BizCreateForm(request.POST)
     create_post=HoodPostsForm(request.POST)
+    message="You haven't searched for anything"
     if create_post.is_valid():
         post=create_post.save(commit=False)
         post.user=request.user
